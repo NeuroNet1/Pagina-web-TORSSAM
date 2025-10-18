@@ -26,7 +26,7 @@ const Home = () => {
             <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
-                  <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                  <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:text-black hover:cursor-pointer">
                     <option value="">Tipo</option>
                     <option value="casa">Casa</option>
                     <option value="departamento">Departamento</option>
@@ -41,7 +41,7 @@ const Home = () => {
                   />
                 </div>
                 <div>
-                  <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                  <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 focus:text-black hover:cursor-pointer">
                     <option value="">Precio</option>
                     <option value="0-1000000">$0 - $1,000,000</option>
                     <option value="1000000-3000000">$1,000,000 - $3,000,000</option>
@@ -67,15 +67,16 @@ const Home = () => {
             Explora la exclusiva gama de propiedades que presentamos con orgullo
           </p>
           
-          <div className="grid grid-cols-6 gap-4 h-[700px]">
+          <div className="grid grid-cols-6 gap-4 h-[900px]">
             {/* FILA 1 - 3 propiedades iguales con alturas diferentes */}
             {/* Property 1 - Más alta */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-64">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-2 row-span-1 rounded-xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-64">
+              <div className="h-full relative rounded-xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex justify-between items-end">
-                    <div>
+                  <img className=" relative top-4" src="./R.jpg" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-xl font-light">$18,000,000</p>
                       <p className="text-sm text-gray-300">VENTA</p>
                     </div>
@@ -85,12 +86,13 @@ const Home = () => {
             </div>
 
             {/* Property 2 - Altura media */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-48 mt-8">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-2 row-span-1 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-48 mt-8">
+              <div className="h-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-2 left-2 right-2">
                   <div className="flex justify-between items-end">
-                    <div>
+                    <img className=" relative top-4" src="./OIP.png" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-lg font-light">$12,500,000</p>
                       <p className="text-xs text-gray-300">VENTA</p>
                     </div>
@@ -100,12 +102,13 @@ const Home = () => {
             </div>
 
             {/* Property 3 - Más baja */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-56 mt-4">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-2 row-span-1 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-56 mt-4">
+              <div className="h-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-3 left-3 right-3">
                   <div className="flex justify-between items-end">
-                    <div>
+                    <img className=" relative top-4" src="./R (2).png" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-lg font-light">$28,000,000</p>
                       <p className="text-xs text-gray-300">VENTA</p>
                     </div>
@@ -116,12 +119,13 @@ const Home = () => {
 
             {/* FILA 2 - 1 ancha + 1 pequeña con diferentes alturas */}
             {/* Property 4 - Ancha y alta */}
-            <div className="col-span-4 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-52 mt-12">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-4 row-span-1 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-52 mt-12">
+              <div className="h-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex justify-between items-end">
-                    <div>
+                  <img className=" relative top-4" src="./R(1).jpg" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-xl font-light">$8,500,000</p>
                       <p className="text-sm text-gray-300">RENTA</p>
                     </div>
@@ -131,12 +135,13 @@ const Home = () => {
             </div>
 
             {/* Property 5 - Más pequeña y más arriba */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-44 mt-4">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-2 row-span-1 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-44 mt-4">
+              <div className="h-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-2 left-2 right-2">
                   <div className="flex justify-between items-end">
-                    <div>
+                    <img className=" relative top-4" src="./R (3).jpg" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-lg font-light">$35,000,000</p>
                       <p className="text-xs text-gray-300">VENTA</p>
                     </div>
@@ -147,12 +152,13 @@ const Home = () => {
 
             {/* FILA 3 - 1 pequeña + 1 más ancha con diferentes alturas */}
             {/* Property 6 - Pequeña y más baja */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-40 mt-16">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-2 row-span-1 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-40 mt-16">
+              <div className="h-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-2 left-2 right-2">
                   <div className="flex justify-between items-end">
-                    <div>
+                    <img className=" relative top-4" src="./R.png" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-base font-light">$15,000,000</p>
                       <p className="text-xs text-gray-300">VENTA</p>
                     </div>
@@ -162,12 +168,13 @@ const Home = () => {
             </div>
 
             {/* Property 7 - Más ancha y alta */}
-            <div className="col-span-4 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-60 mt-8">
-              <div className="h-full bg-gray-700 relative">
+            <div className="col-span-4 row-span-1 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-60 mt-8">
+              <div className="h-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex justify-between items-end">
-                    <div>
+                    <img className=" relative top-4" src="./R (3).jpg" alt="" />
+                    <div className="absolute p-2">
                       <p className="text-xl font-light">$42,000,000</p>
                       <p className="text-sm text-gray-300">VENTA</p>
                     </div>
@@ -193,8 +200,8 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 grid-rows-2 gap-8 mb-12">
               {/* Xalapa ocupa la fila 1 y 2, es más alta */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl row-span-2 col-span-1 h-[520px] group">
-                <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/xalapa.jpg" alt="Xalapa" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                <div className="w-full h-full flex items-center justify-center">
+                  <img src="/xalapa.jpg" alt="Xalapa" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-10 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-8 py-3 rounded-xl text-3xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">XALAPA</span>
@@ -202,8 +209,8 @@ const Home = () => {
               </div>
               {/* Resto de ciudades, más grandes */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
-                <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/coatepec.jpg" alt="Coatepec" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                <div className="w-full h-full flex items-center justify-center">
+                  <img src="./coatepec.jpg" alt="Coatepec" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">COATEPEC</span>
@@ -211,7 +218,7 @@ const Home = () => {
               </div>
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/banderilla.jpg" alt="Banderilla" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                  <img src="./banderilla.png" alt="Banderilla" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">BANDERILLA</span>
@@ -219,7 +226,7 @@ const Home = () => {
               </div>
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/veracruz.jpg" alt="Veracruz" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                  <img src="./veracruz.jpg" alt="Veracruz" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">VERACRUZ</span>
@@ -227,7 +234,7 @@ const Home = () => {
               </div>
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/emiliano-zapata.jpg" alt="Emiliano Zapata" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                  <img src="./emiliano zapata.png" alt="Emiliano Zapata" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">EMILIANO ZAPATA</span>
@@ -355,10 +362,9 @@ const Home = () => {
 
               {/* Imagen derecha */}
               <div className="flex justify-center">
-                <div className="w-80 h-96 bg-black rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-white text-2xl font-light mb-2">TORSSAM</div>
-                    <div className="text-gray-400 text-sm">Grupo Inmobiliario</div>
+                <div className="w-80 h-96 rounded-lg flex items-center justify-center">
+                  <div className="absolute text-center ">
+                    <img src="./torssa.jpg" alt="TORSSAM" className="w-[350px]"/>
                   </div>
                 </div>
               </div>
