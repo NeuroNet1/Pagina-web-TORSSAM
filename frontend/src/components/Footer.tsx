@@ -4,16 +4,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Logo Section */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              {/* Logo Icon */}
-              <div className="w-8 h-12 bg-gradient-to-b from-gray-400 to-gray-600 rounded-sm relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 transform -skew-x-12"></div>
-              </div>
-              <div>
-                <h2 className="text-2xl font-light tracking-[0.2em] text-white">TORSSA</h2>
-                <p className="text-xs text-gray-400 tracking-wider">Grupo Inmobiliario</p>
-              </div>
+          <div className="flex justify-center">
+            <div className="w-80 h-80 bg-black rounded-lg flex items-center justify-center">
+              <img src="/logotorssam.webp" alt="TORSSA Logo" className="w-72 h-72 object-contain" />
             </div>
           </div>
 
