@@ -15,8 +15,7 @@ const About = () => {
         {/* Bloque TORSSA: imagen izquierda, texto derecha */}
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="w-64 h-48 bg-gray-100 rounded-md flex-shrink-0 flex items-center justify-center">
-            {/* Aquí va la imagen de TORSSA */}
-            <span className="text-gray-400">Imagen</span>
+            <img src="./torssa.jpg" alt="" />
           </div>
           <div className="md:pl-8 w-full">
             <h2 className="text-3xl font-light mb-2">TORSSA</h2>
@@ -34,14 +33,13 @@ const About = () => {
             </p>
           </div>
           <div className="w-64 h-48 bg-gray-100 rounded-md flex-shrink-0 flex items-center justify-center">
-            {/* Aquí va la imagen de Historia */}
-            <span className="text-gray-400">Imagen</span>
+            <img src="./av.png" alt="" />
           </div>
         </div>
       </div>
 
       {/* Sección Misión y Visión */}
-      <div className="relative w-full py-20 bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/images/mission-vision-bg.jpg')"}}>
+      <div className="relative w-full py-20 bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('./xalapa.jpg')"}}>
         {/* Overlay oscuro */}
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         
@@ -90,7 +88,7 @@ const About = () => {
             <div className="bg-white rounded-lg p-6 group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-full h-64 bg-black rounded-md mb-4 overflow-hidden">
                 <img 
-                  src="/images/team-member-1.jpg" 
+                  src="./persona.png" 
                   alt="Joel Jimenez" 
                   className="w-full h-full object-cover"
                 />
@@ -108,7 +106,7 @@ const About = () => {
             <div className="bg-white rounded-lg p-6 group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-full h-64 bg-black rounded-md mb-4 overflow-hidden">
                 <img 
-                  src="/images/team-member-2.jpg" 
+                  src="./persona.png" 
                   alt="Joel Jimenez" 
                   className="w-full h-full object-cover"
                 />
@@ -126,7 +124,7 @@ const About = () => {
             <div className="bg-white rounded-lg p-6 group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-full h-64 bg-black rounded-md mb-4 overflow-hidden">
                 <img 
-                  src="/images/team-member-3.jpg" 
+                  src="./persona.png" 
                   alt="Joel Jimenez" 
                   className="w-full h-full object-cover"
                 />
@@ -144,7 +142,7 @@ const About = () => {
             <div className="bg-white rounded-lg p-6 group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-full h-64 bg-black rounded-md mb-4 overflow-hidden">
                 <img 
-                  src="/images/team-member-4.jpg" 
+                  src="./persona.png"  
                   alt="Joel Jimenez" 
                   className="w-full h-full object-cover"
                 />
@@ -162,7 +160,7 @@ const About = () => {
             <div className="bg-white rounded-lg p-6 group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-full h-64 bg-black rounded-md mb-4 overflow-hidden">
                 <img 
-                  src="/images/team-member-5.jpg" 
+                  src="./persona.png" 
                   alt="Joel Jimenez" 
                   className="w-full h-full object-cover"
                 />
@@ -180,7 +178,7 @@ const About = () => {
             <div className="bg-white rounded-lg p-6 group hover:transform hover:scale-105 transition-all duration-300">
               <div className="w-full h-64 bg-black rounded-md mb-4 overflow-hidden">
                 <img 
-                  src="/images/team-member-6.jpg" 
+                  src="./persona.png" 
                   alt="Joel Jimenez" 
                   className="w-full h-full object-cover"
                 />
@@ -210,7 +208,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Xalapa - Imagen grande izquierda */}
             <div className="lg:row-span-2 relative overflow-hidden rounded-lg group cursor-pointer">
-              <div className="h-96 lg:h-full bg-cover bg-center" style={{backgroundImage: "url('/images/city-xalapa.jpg')"}}>
+              <div className="h-96 lg:h-full bg-cover bg-center" style={{backgroundImage: "url('./xalapa.jpg')"}}>
                 <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-3xl font-light text-white">XALAPA</h3>
@@ -220,7 +218,7 @@ const About = () => {
 
             {/* Coatepec - Superior derecha */}
             <div className="relative overflow-hidden rounded-lg group cursor-pointer">
-              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('/images/city-coatepec.jpg')"}}>
+              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('./coatepec.jpg')"}}>
                 <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-2xl font-light text-white">COATEPEC</h3>
@@ -230,7 +228,7 @@ const About = () => {
 
             {/* Banderilla - Superior derecha */}
             <div className="relative overflow-hidden rounded-lg group cursor-pointer">
-              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('/images/city-banderilla.jpg')"}}>
+              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('./banderilla.png')"}}>
                 <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-2xl font-light text-white">BANDERILLA</h3>
@@ -240,7 +238,7 @@ const About = () => {
 
             {/* Veracruz - Inferior izquierda */}
             <div className="relative overflow-hidden rounded-lg group cursor-pointer">
-              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('/images/city-veracruz.jpg')"}}>
+              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('./veracruz.jpg')"}}>
                 <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-2xl font-light text-white">VERACRUZ</h3>
@@ -250,7 +248,7 @@ const About = () => {
 
             {/* Emiliano Zapata - Inferior derecha */}
             <div className="relative overflow-hidden rounded-lg group cursor-pointer">
-              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('/images/city-emiliano-zapata.jpg')"}}>
+              <div className="h-48 bg-cover bg-center" style={{backgroundImage: "url('./emiliano zapata.png')"}}>
                 <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4">
                   <h3 className="text-xl font-light text-white">EMILIANO<br />ZAPATA</h3>

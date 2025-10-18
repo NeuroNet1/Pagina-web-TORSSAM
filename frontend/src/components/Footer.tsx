@@ -7,8 +7,8 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               {/* Logo Icon */}
-              <div className="w-8 h-12 bg-gradient-to-b from-gray-400 to-gray-600 rounded-sm relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 transform -skew-x-12"></div>
+              <div className="w-8 h-12 bg-gradient-to-b rounded-sm relative overflow-hidden">
+                <img src="./torssa.jpg" alt="" className="w-[100px]"/>
               </div>
               <div>
                 <h2 className="text-2xl font-light tracking-[0.2em] text-white">TORSSA</h2>

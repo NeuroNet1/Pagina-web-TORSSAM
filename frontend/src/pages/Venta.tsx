@@ -259,8 +259,7 @@ const Venta = () => {
             <div className="flex justify-center">
               <div className="w-80 h-80 bg-black rounded-lg flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-white text-4xl font-light mb-2 tracking-widest">TORSSA</div>
-                  <div className="text-gray-400 text-sm tracking-wide">Grupo Inmobiliario</div>
+                  <img src="./torssa.jpg" alt=""/>
                 </div>
               </div>
             </div>
