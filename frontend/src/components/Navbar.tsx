@@ -19,9 +19,9 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Menú izquierdo */}
             <div className="flex space-x-6">
+              <Link to="/propiedades" className="hover:text-gray-300 transition-colors">PROPIEDADES</Link>
               <Link to="/venta" className="hover:text-gray-300 transition-colors">VENTA</Link>
               <Link to="/renta" className="hover:text-gray-300 transition-colors">RENTA</Link>
-              <span className="hover:text-gray-300 transition-colors cursor-pointer">PROPIEDADES</span>
             </div>
 
             {/* Logo central */}
