@@ -57,6 +57,37 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Results Section */}
+      <section className="py-16 bg-black text-white border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-12 tracking-wide">
+            Nuestros Resultados
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Stat 1 */}
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-light mb-2">+2 mil</p>
+              <p className="text-gray-400 text-lg">Unidades Vendidas</p>
+            </div>
+            
+            {/* Stat 2 */}
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-light mb-2">+20 mil</p>
+              <p className="text-gray-400 text-lg">Clientes Atendidos</p>
+            </div>
+            
+            {/* Stat 3 */}
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-light mb-2">+3 mil</p>
+              <p className="text-gray-400 text-lg">Unidades Rentadas</p>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8"></div>
+        </div>
+      </section>
+
       {/* Featured Properties Section */}
       <section className="py-20 bg-black text-white">
         <div className="max-w-7xl mx-auto px-4">
