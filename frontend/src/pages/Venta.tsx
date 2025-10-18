@@ -1,4 +1,4 @@
-const Venta = () => {
+const Renta = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Sección principal - Hero */}
@@ -21,7 +21,7 @@ const Venta = () => {
               lineHeight: '98.755%'
             }}
           >
-            Vende Tu Propiedad De<br />
+            Renta Tu Propiedad De<br />
             Forma Ágil y Segura
           </h2>
           <p 
@@ -62,12 +62,11 @@ const Venta = () => {
                 position: 'relative'
               }}
             >
-              En Torssa entendemos que vender una<br />
-              propiedad no es solo una transacción; es un<br />
-              paso importante en tu vida. Por eso te<br />
-              acompañamos desde la valuación hasta la<br />
-              firma final, garantizando transparencia,confianza y <br />
-              resultados.
+              En Torssa entendemos que rentar una<br />
+              propiedad es una decisión importante. Por eso te<br />
+              acompañamos desde la valuación hasta encontrar<br />
+              al inquilino perfecto, garantizando transparencia,<br />
+              confianza y resultados.
             </p>
           </div>
         </div>
@@ -256,13 +255,8 @@ const Venta = () => {
             </div>
 
             {/* Logo TORSSA - Derecha */}
-            <div className="flex justify-center">
-              <div className="w-80 h-80 bg-black rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-white text-4xl font-light mb-2 tracking-widest">TORSSA</div>
-                  <div className="text-gray-400 text-sm tracking-wide">Grupo Inmobiliario</div>
-                </div>
-              </div>
+            <div className="bg-white rounded-lg p-8 flex items-center justify-center min-h-full">
+              <img src="/logotorssam.webp" alt="TORSSA Logo" className="w-96 h-auto object-contain" />
             </div>
           </div>
         </div>
@@ -271,4 +265,4 @@ const Venta = () => {
   )
 }
 
-export default Venta
+export default Renta
