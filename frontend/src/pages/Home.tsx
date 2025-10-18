@@ -27,10 +27,10 @@ const Home = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
                   <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
-                    <option value="">Tipo</option>
-                    <option value="casa">Casa</option>
-                    <option value="departamento">Departamento</option>
-                    <option value="terreno">Terreno</option>
+                    <option value="" className="bg-gray-900 text-white">Tipo</option>
+                    <option value="casa" className="bg-gray-900 text-white">Casa</option>
+                    <option value="departamento" className="bg-gray-900 text-white">Departamento</option>
+                    <option value="terreno" className="bg-gray-900 text-white">Terreno</option>
                   </select>
                 </div>
                 <div>
@@ -42,10 +42,10 @@ const Home = () => {
                 </div>
                 <div>
                   <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
-                    <option value="">Precio</option>
-                    <option value="0-1000000">$0 - $1,000,000</option>
-                    <option value="1000000-3000000">$1,000,000 - $3,000,000</option>
-                    <option value="3000000+">$3,000,000+</option>
+                    <option value="" className="bg-gray-900 text-white">Precio</option>
+                    <option value="0-1000000" className="bg-gray-900 text-white">$0 - $1,000,000</option>
+                    <option value="1000000-3000000" className="bg-gray-900 text-white">$1,000,000 - $3,000,000</option>
+                    <option value="3000000+" className="bg-gray-900 text-white">$3,000,000+</option>
                   </select>
                 </div>
               </div>
