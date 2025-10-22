@@ -95,7 +95,8 @@ const Home = () => {
       </section>
 
       {/* Featured Properties Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 bg-black text-white"
+       >
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-light text-center mb-4 tracking-wide">
             Propiedades Destacadas
