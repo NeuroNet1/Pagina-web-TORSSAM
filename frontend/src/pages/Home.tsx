@@ -1,4 +1,10 @@
+{/*imagnanes de setados*/}
+
+import veracruz from '../Public/estados/VERACRUZ.png';
+import coactepch from '../Public/estados/COATEPEC.png';
+
 const Home = () => {
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -225,7 +231,7 @@ const Home = () => {
               {/* Xalapa ocupa la fila 1 y 2, es más alta */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl row-span-2 col-span-1 h-[520px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/xalapa.jpg" alt="Xalapa" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                  <img src="" alt="Xalapa" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-10 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-8 py-3 rounded-xl text-3xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">XALAPA</span>
@@ -234,7 +240,7 @@ const Home = () => {
               {/* Resto de ciudades, más grandes */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/coatepec.jpg" alt="Coatepec" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                  <img src={coactepch} alt="Coatepec" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">COATEPEC</span>
@@ -250,7 +256,7 @@ const Home = () => {
               </div>
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                  <img src="/images/veracruz.jpg" alt="Veracruz" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
+                  <img src={veracruz} alt="Veracruz" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
                   <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">VERACRUZ</span>

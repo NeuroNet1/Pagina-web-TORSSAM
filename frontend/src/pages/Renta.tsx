@@ -1,3 +1,11 @@
+import prt1 from '../Public/Renta/nuestroProceso/1.png';
+import prt2 from '../Public/Renta/nuestroProceso/2.png';
+import prt3 from '../Public/Renta/nuestroProceso/3.png';
+import prt4 from '../Public/Renta/nuestroProceso/4.png';
+import prt5 from '../Public/Renta/nuestroProceso/5.png';
+import prt6 from '../Public/Renta/nuestroProceso/6.png';
+
+
 const Renta = () => {
   return (
     <div className="min-h-screen bg-black text-white">
@@ -73,112 +81,156 @@ const Renta = () => {
       </div>
 
       {/* Sección Conoce Nuestro Proceso */}
-      <div className="bg-black py-20">
+        <div className="bg-black py-20">
         <div className="max-w-4xl mx-auto px-4">
           {/* Título */}
           <h2 className="text-4xl font-light text-white text-center mb-16">
             Conoce Nuestro<br />
-            Proceso
+            Proceso de renta paso a paso
           </h2>
 
           {/* Pasos del proceso */}
           <div className="relative">
-            {/* Línea vertical conectora */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-white opacity-30"></div>
+            {/* Línea vertical conectora (centrada) */}
+            <div className="absolute left-1/2 top-6 bottom-6 w-px bg-white  -translate-x-1/2 "></div>
+{/*animación de los pasos*/}
+            <style>{`
+  @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.25);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fade-in-up {
+  animation-name: fadeInUp;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+
+  /* View Timeline Animation */
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+  } `}</style>
+
+
 
             {/* Paso 1 */}
-            <div className="flex items-start mb-12 relative">
-              <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl z-10" style={{fontFamily: "'PlayfairDisplay-Medium', sans-serif"}}>
+            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 1
               </div>
-              <div className="ml-8 text-white">
-                <h3 className="text-xl font-medium mb-2" style={{fontFamily: "'Montserrat-SemiBold', sans-serif"}}>Revisión de Documentación</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Por medio de un formulario, realizamos un análisis legal y fiscal<br />
-                  puntual de la propiedad para conocer su situación y proceder en el<br />
-                  proceso.
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+                <div className="flex justify-center sm:justify-end">
+                  <img src={prt1} alt="Auditoría Documental" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                </div>
+                <div className="text-white">
+                  <h3 className="text-xl font-semibold mb-2">Auditoría Documental y Preparación Legal</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Revisamos y ordenamos toda la documentación necesaria para garantizar que la propiedad esté lista para la venta. Nuestro equipo legal verifica títulos, gravámenes y antecedentes para evitar sorpresas en el cierre.
+                  </p>
+                </div>
               </div>
             </div>
 
+
             {/* Paso 2 */}
-            <div className="flex items-start mb-12 relative">
-              <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl z-10" style={{fontFamily: "'PlayfairDisplay-Medium', sans-serif"}}>
+            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 2
               </div>
-              <div className="ml-8 text-white">
-                <h3 className="text-xl font-medium mb-2" style={{fontFamily: "'Montserrat-SemiBold', sans-serif"}}>Revisión de Documentación</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Por medio de un formulario, realizamos un análisis legal y fiscal<br />
-                  puntual de la propiedad para conocer su situación y proceder en el<br />
-                  proceso.
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+                <div className="order-2 sm:order-1 text-white">
+                  <h3 className="text-xl font-semibold mb-2">Análisis Inicial y Valoración Profesional</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Realizamos una valoración profesional y un análisis de mercado para definir un precio competitivo y una estrategia que maximice tu beneficio y acelere la venta.
+                  </p>
+                </div>
+                <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
+                  <img src={prt2} alt="Análisis Inicial" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                </div>
               </div>
             </div>
 
             {/* Paso 3 */}
-            <div className="flex items-start mb-12 relative">
-              <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl z-10" style={{fontFamily: "'PlayfairDisplay-Medium', sans-serif"}}>
+            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 3
               </div>
-              <div className="ml-8 text-white">
-                <h3 className="text-xl font-medium mb-2" style={{fontFamily: "'Montserrat-SemiBold', sans-serif"}}>Revisión de Documentación</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Por medio de un formulario, realizamos un análisis legal y fiscal<br />
-                  puntual de la propiedad para conocer su situación y proceder en el<br />
-                  proceso.
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+                <div className="flex justify-center sm:justify-end">
+                  <img src={prt3}  alt="Estrategia de Comercialización" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                </div>
+                <div className="text-white">
+                  <h3 className="text-xl font-semibold mb-2">Estrategia de Comercialización Personalizada</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Diseñamos un plan de comercialización a la medida: fotografía profesional, anuncios en portales y difusión dirigida para atraer compradores calificados.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Paso 4 */}
-            <div className="flex items-start mb-12 relative">
-              <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl z-10" style={{fontFamily: "'PlayfairDisplay-Medium', sans-serif"}}>
+            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 4
               </div>
-              <div className="ml-8 text-white">
-                <h3 className="text-xl font-medium mb-2" style={{fontFamily: "'Montserrat-SemiBold', sans-serif"}}>Revisión de Documentación</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Por medio de un formulario, realizamos un análisis legal y fiscal<br />
-                  puntual de la propiedad para conocer su situación y proceder en el<br />
-                  proceso.
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+                <div className="order-2 sm:order-1 text-white">
+                  <h3 className="text-xl font-semibold mb-2">Gestión de Interesados y Visitas Filtradas</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Coordinamos y filtramos interesados, agendamos visitas con compradores preseleccionados y realizamos presentaciones guiadas para optimizar tiempo y resultados.
+                  </p>
+                </div>
+                <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
+                  <img src={prt4}alt="Gestión de Interesados" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                </div>
               </div>
             </div>
 
             {/* Paso 5 */}
-            <div className="flex items-start mb-12 relative">
-              <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl z-10" style={{fontFamily: "'PlayfairDisplay-Medium', sans-serif"}}>
+            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 5
               </div>
-              <div className="ml-8 text-white">
-                <h3 className="text-xl font-medium mb-2" style={{fontFamily: "'Montserrat-SemiBold', sans-serif"}}>Revisión de Documentación</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Por medio de un formulario, realizamos un análisis legal y fiscal<br />
-                  puntual de la propiedad para conocer su situación y proceder en el<br />
-                  proceso.
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+                <div className="flex justify-center sm:justify-end">
+                  <img src={prt5}alt="Negociación y Ofertas" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                </div>
+                <div className="text-white">
+                  <h3 className="text-xl font-semibold mb-2">Negociación y Presentación de Ofertas</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Asesoramos en la recepción y negociación de ofertas, evaluando propuestas y buscando las mejores condiciones para ti, con transparencia y protección de tus intereses.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Paso 6 */}
-            <div className="flex items-start relative">
-              <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-xl z-10" style={{fontFamily: "'PlayfairDisplay-Medium', sans-serif"}}>
+            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 6
               </div>
-              <div className="ml-8 text-white">
-                <h3 className="text-xl font-medium mb-2" style={{fontFamily: "'Montserrat-SemiBold', sans-serif"}}>Revisión de Documentación</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Por medio de un formulario, realizamos un análisis legal y fiscal<br />
-                  puntual de la propiedad para conocer su situación y proceder en el<br />
-                  proceso.
-                </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+                <div className="order-2 sm:order-1 text-white">
+                  <h3 className="text-xl font-semibold mb-2">Firma, Escritura y Cierre Seguro</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Acompañamos todo el proceso de firma y escrituración, coordinando trámites y garantizando un cierre seguro y conforme a la normativa.
+                  </p>
+                </div>
+                <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
+                  <img src={prt6}  alt="Firma y Cierre" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       {/* Sección Formulario */}
       <div className="bg-gray-900 py-20">
         <div className="max-w-6xl mx-auto px-4">
