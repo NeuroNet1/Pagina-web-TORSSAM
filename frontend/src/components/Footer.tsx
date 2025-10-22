@@ -26,7 +26,7 @@ const Footer = () => {
               <a href="/sobre-nosotros" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Sobre Nosotros
               </a>
-              <a href="/contacto" className="block text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="/contact" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Contacto
               </a>
             </nav>
