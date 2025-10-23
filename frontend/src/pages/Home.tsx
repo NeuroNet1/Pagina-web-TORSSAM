@@ -2,20 +2,22 @@
 
 import veracruz from '../Public/estados/VERACRUZ.png';
 import coactepch from '../Public/estados/COATEPEC.png';
+import video from '../Public/inicio/inicio1.mp4';
 
 const Home = () => {
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative min-h-screen bg-black text-white flex items-center"
+     <section
+    className="relative min-h-screen bg-black text-white flex items-center"
         style={{
           backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect width="1920" height="1080" fill="%23000"/><rect x="0" y="0" width="1920" height="1080" fill="url(%23grain)" opacity="0.15"/><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23fff" opacity="0.1"/></pattern></defs></svg>')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       >
+ 
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-wide">
