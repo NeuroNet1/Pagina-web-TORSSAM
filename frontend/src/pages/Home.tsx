@@ -5,11 +5,24 @@ import hero from '../Public/Inicio/Videos/Hero.mp4';
 import fondo from '../Public/fondo.png';
 import valor from '../Public/Inicio/Img_valor/image.png'
 import form_Img from '../Public/foto1.jpeg';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
+
+interface VisibilityProps {
+  isVisible: boolean;
+}
 
 
 const Home = () => {
-  const videoRef = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Efecto para controlar la velocidad del video
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75;
+    }
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -18,18 +31,24 @@ const Home = () => {
      <section
     className="relative min-h-screen bg-black text-white flex items-center"
       >
-       <video
-  ref={videoRef}
-  className="absolute top-0 left-0 w-full h-[95%] object-cover z-0 opacity-60"
-  autoPlay
-  loop
-  muted
->
-  <source src={hero} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>    
+       <div className="absolute top-0 left-0 w-full h-[95%] z-0">
+         {/* Capa de degradado sutil */}
+         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 to-transparent z-10"></div>
+         <div className="absolute inset-0 bg-black/20 z-10"></div>
+         <video
+           ref={videoRef}
+           className="absolute top-0 left-0 w-full h-full object-cover opacity-90"
+           autoPlay
+           loop
+           muted
+           playsInline
+         >
+           <source src={hero} type="video/mp4" />
+           Your browser does not support the video tag.
+         </video>
+       </div>
       
-        <div className="relative max-w-7xl mx-auto px-4 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 text-center z-20">
           <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-wide">
             Guiando tu camino en<br />
             bienes raíces desde 1976
@@ -40,8 +59,8 @@ const Home = () => {
           </p>
           
           {/* Search Form */}
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6">
+          <div className="max-w-2xl mx-auto relative z-30">
+            <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
                   <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
@@ -76,21 +95,21 @@ const Home = () => {
         </section>
 
       {/* Results Section */}
-      <div>
+      <div className="relative z-0">
         <img 
           src={fondo} 
           alt="decor" 
-          className="absolute -right-[500px] top-[800px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15"
+          className="absolute -right-[500px] top-[100px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15 z-0"
         />
         <img
           src={fondo}
           alt="decor2"
-          className="absolute right-[1000px] top-[1800px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15"
+          className="absolute right-[1000px] top-[1800px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15 z-0"
         />
         <img
           src={fondo}
           alt="decor2"
-          className="absolute -right-[600px] top-[2100px] rotate-[310deg] w-[600px] md:w-[800px] opacity-15"
+          className="absolute -right-[600px] top-[2100px] rotate-[310deg] w-[600px] md:w-[800px] opacity-15 z-0"
         />
 
       <section className="py-16 bg-black text-white border-b border-gray-800">
@@ -103,20 +122,44 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Stat 1 */}
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-light mb-2">+2 mil</p>
-              <p className="text-gray-400 text-lg">Unidades Vendidas</p>
+              <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+                {({ isVisible }: { isVisible: boolean }) => (
+                  <div>
+                    <p className="text-5xl md:text-6xl font-light mb-2">
+                      +{isVisible ? <CountUp end={2} duration={2.5} separator="," /> : '0'}<span className="ml-2">mil</span>
+                    </p>
+                    <p className="text-gray-400 text-lg">Unidades Vendidas</p>
+                  </div>
+                )}
+              </VisibilitySensor>
             </div>
             
             {/* Stat 2 */}
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-light mb-2">+20 mil</p>
-              <p className="text-gray-400 text-lg">Clientes Atendidos</p>
+              <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+                {({ isVisible }: { isVisible: boolean }) => (
+                  <div>
+                    <p className="text-5xl md:text-6xl font-light mb-2">
+                      +{isVisible ? <CountUp end={20} duration={2.5} separator="," /> : '0'}<span className="ml-2">mil</span>
+                    </p>
+                    <p className="text-gray-400 text-lg">Clientes Atendidos</p>
+                  </div>
+                )}
+              </VisibilitySensor>
             </div>
             
             {/* Stat 3 */}
             <div className="text-center">
-              <p className="text-5xl md:text-6xl font-light mb-2">+3 mil</p>
-              <p className="text-gray-400 text-lg">Unidades Rentadas</p>
+              <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+                {({ isVisible }: { isVisible: boolean }) => (
+                  <div>
+                    <p className="text-5xl md:text-6xl font-light mb-2">
+                      +{isVisible ? <CountUp end={3} duration={2.5} separator="," /> : '0'}<span className="ml-2">mil</span>
+                    </p>
+                    <p className="text-gray-400 text-lg">Unidades Rentadas</p>
+                  </div>
+                )}
+              </VisibilitySensor>
             </div>
           </div>
           
@@ -135,11 +178,11 @@ const Home = () => {
             Explora la exclusiva gama de propiedades que presentamos con orgullo
           </p>
           
-          <div className="grid grid-cols-6 gap-4 h-[700px]">
+          <div className="property-grid">
             {/* FILA 1 - 3 propiedades iguales con alturas diferentes */}
             {/* Property 1 - Más alta */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-64">
-              <div className="h-full bg-gray-700 relative">
+            <div className="property-container col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden h-64">
+              <div className="h-full bg-gray-700 relative group">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex justify-between items-end">
@@ -153,8 +196,8 @@ const Home = () => {
             </div>
 
             {/* Property 2 - Altura media */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-48 mt-8">
-              <div className="h-full bg-gray-700 relative">
+            <div className="property-container col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden h-48 mt-8">
+              <div className="h-full bg-gray-700 relative group">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-2 left-2 right-2">
                   <div className="flex justify-between items-end">
@@ -168,8 +211,8 @@ const Home = () => {
             </div>
 
             {/* Property 3 - Más baja */}
-            <div className="col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-56 mt-4">
-              <div className="h-full bg-gray-700 relative">
+            <div className="property-container col-span-2 row-span-1 bg-gray-900 rounded-lg overflow-hidden h-56 mt-4">
+              <div className="h-full bg-gray-700 relative group">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-3 left-3 right-3">
                   <div className="flex justify-between items-end">
@@ -184,8 +227,8 @@ const Home = () => {
 
             {/* FILA 2 - 1 ancha + 1 pequeña con diferentes alturas */}
             {/* Property 4 - Ancha y alta */}
-            <div className="col-span-4 row-span-1 bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 h-52 mt-12">
-              <div className="h-full bg-gray-700 relative">
+            <div className="property-container col-span-4 row-span-1 bg-gray-900 rounded-lg overflow-hidden h-52 mt-12">
+              <div className="h-full bg-gray-700 relative group">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex justify-between items-end">

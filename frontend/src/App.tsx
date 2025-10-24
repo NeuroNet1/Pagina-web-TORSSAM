@@ -11,17 +11,19 @@ import Propiedades from './pages/Propiedades'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col overflow-hidden">
         <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/venta" element={<Venta />} />
-            <Route path="/Renta" element={<Renta />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/propiedades" element={<Propiedades />} />
-          </Routes>
+        <main className="flex-1 w-full max-w-full">
+          <div className="max-w-full overflow-x-hidden">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/venta" element={<Venta />} />
+              <Route path="/Renta" element={<Renta />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/propiedades" element={<Propiedades />} />
+            </Routes>
+          </div>
         </main>
         <Footer />
       </div>
