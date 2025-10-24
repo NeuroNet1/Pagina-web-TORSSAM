@@ -1,24 +1,34 @@
-{/*imagnanes de setados*/}
 
-import veracruz from '../Public/estados/VERACRUZ.png';
-import coactepch from '../Public/estados/COATEPEC.png';
-import video from '../Public/inicio/inicio1.mp4';
+import veracruz from '../Public/Inicio/Estados/VERACRUZ.png';
+import coactepch from '../Public/Inicio/Estados/COATEPEC.png';
+import hero from '../Public/Inicio/Videos/Hero.mp4';
+import fondo from '../Public/fondo.png';
+import valor from '../Public/Inicio/Img_valor/image.png'
+import form_Img from '../Public/foto1.jpeg';
+import { useRef } from 'react';
+
 
 const Home = () => {
+  const videoRef = useRef(null)
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
+      
      <section
     className="relative min-h-screen bg-black text-white flex items-center"
-        style={{
-          backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect width="1920" height="1080" fill="%23000"/><rect x="0" y="0" width="1920" height="1080" fill="url(%23grain)" opacity="0.15"/><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23fff" opacity="0.1"/></pattern></defs></svg>')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
       >
- 
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+       <video
+  ref={videoRef}
+  className="absolute top-0 left-0 w-full h-[95%] object-cover z-0 opacity-60"
+  autoPlay
+  loop
+  muted
+>
+  <source src={hero} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>    
+      
         <div className="relative max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-wide">
             Guiando tu camino en<br />
@@ -63,15 +73,33 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
       {/* Results Section */}
+      <div>
+        <img 
+          src={fondo} 
+          alt="decor" 
+          className="absolute -right-[500px] top-[800px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15"
+        />
+        <img
+          src={fondo}
+          alt="decor2"
+          className="absolute right-[1000px] top-[1800px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15"
+        />
+        <img
+          src={fondo}
+          alt="decor2"
+          className="absolute -right-[600px] top-[2100px] rotate-[310deg] w-[600px] md:w-[800px] opacity-15"
+        />
+
       <section className="py-16 bg-black text-white border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-light text-center mb-12 tracking-wide">
             Nuestros Resultados
           </h2>
           
+      
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Stat 1 */}
             <div className="text-center">
@@ -226,59 +254,60 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-        <section className="ciudades-principales bg-gray-900 text-white py-12">
+        <section className="ciudades-principales bg-black text-white py-12">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-2">Ciudades Principales</h2>
             <p className="text-center mb-8">Búsqueda por ubicación</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 grid-rows-2 gap-8 mb-12">
               {/* Xalapa ocupa la fila 1 y 2, es más alta */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl row-span-2 col-span-1 h-[520px] group">
+              <div className="relative rounded-[2px] overflow-hidden shadow-2xl row-span-2 col-span-1 h-[520px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
                   <img src="" alt="Xalapa" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-10 flex justify-center">
-                  <span className="bg-black bg-opacity-70 text-white px-8 py-3 rounded-xl text-3xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">XALAPA</span>
+                  <span className="bg-black bg-opacity-70 text-white px-8 py-3 rounded-[2px] text-3xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">XALAPA</span>
                 </span>
               </div>
               {/* Resto de ciudades, más grandes */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
+              <div className="relative rounded-[2px] overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
                   <img src={coactepch} alt="Coatepec" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
-                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">COATEPEC</span>
+                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-[2px] text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">COATEPEC</span>
                 </span>
               </div>
-              <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
+              <div className="relative rounded-[2px] overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
                   <img src="/images/banderilla.jpg" alt="Banderilla" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
-                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">BANDERILLA</span>
+                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-[2px] text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">BANDERILLA</span>
                 </span>
               </div>
-              <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
+              <div className="relative rounded-[2px] overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
                   <img src={veracruz} alt="Veracruz" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
-                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">VERACRUZ</span>
+                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-[2px] text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">VERACRUZ</span>
                 </span>
               </div>
-              <div className="relative rounded-xl overflow-hidden shadow-2xl h-[250px] group">
+              <div className="relative rounded-[2px] overflow-hidden shadow-2xl h-[250px] group">
                 <div className="w-full h-full bg-gray-800 flex items-center justify-center">
                   <img src="/images/emiliano-zapata.jpg" alt="Emiliano Zapata" className="w-full h-full object-cover" onError={e => {e.currentTarget.style.display='none';}} />
                 </div>
                 <span className="absolute inset-x-0 bottom-8 flex justify-center">
-                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-xl text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">EMILIANO ZAPATA</span>
+                  <span className="bg-black bg-opacity-70 text-white px-6 py-2 rounded-[2px] text-2xl font-bold text-center transition-all duration-500 opacity-80 group-hover:scale-105 group-hover:opacity-100 animate-fade-in">EMILIANO ZAPATA</span>
                 </span>
               </div>
             </div>
           </div>
         </section>
-
+</div>
         {/* Sección Agenda una Asesoría */}
         <div className="bg-black py-20">
+          
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h2 className="text-4xl font-light text-white mb-4">Agenda una Asesoría</h2>
             <p className="text-gray-400 text-lg mb-12">
@@ -367,45 +396,80 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Sección ¿Estás pensando en vender tu propiedad? */}
-        <div className="bg-gray-100 py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Texto izquierda */}
-              <div>
-                <div className="text-sm text-gray-600 mb-4 tracking-wide">TORSSA GRUPO INMOBILIARIO</div>
-                <h2 className="text-4xl font-light text-black mb-6 leading-tight">
-                  ¿Estás<br />
-                  pensando en<br />
-                  vender tu<br />
-                  propiedad?
-                </h2>
-                <a 
-                  href="https://wa.me/522281234567?text=Hola,%20estoy%20interesado%20en%20vender%20mi%20propiedad%20y%20me%20gustaría%20recibir%20más%20información."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 rounded-full text-white transition-colors"
-                >
-                  MANDANOS UN MENSAJE
-                  <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.588z"/>
-                  </svg>
-                </a>
-              </div>
+        {/* Sección Formulario */}
+             <div className="bg-[#060606] py-20">
+               <div className="max-w-6xl mx-auto px-4">
+                 <div className="grid md:grid-cols-2 gap-12 items-center">
+                   {/* Contenido - Izquierda */}
+                   <div className="text-white">
+                     <p className="text-sm mb-4 tracking-wide text-gray-300" style={{fontFamily: "Montserrat, sans-serif"}}>
+                       TORSSA GRUPO INMOBILIARIO
+                     </p>
+                     <h2 className="text-5xl font-bold mb-8 leading-tight" style={{fontFamily: '"Poltawski Nowy", serif'}}>
+                       ¿Listo para rentar tu propiedad sin preocupaciones?
+                     </h2>
+                     <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+                       MANDANOS UN MENSAJE
+                     </button>
+                   </div>
+       
+                   {/* Imagen - Derecha */}
+                   <div className="flex justify-center">
+                     <img 
+                       src={form_Img} 
+                       alt="City buildings" 
+                       className="w-full max-w-lg h-auto object-cover rounded-lg"
+                     />
+                   </div>
+                 </div>
+               </div>
+             </div>
+               {/* Sección: Conoce el valor de tu propiedad */}
+               
+                  
+      <section className="py-16 bg-black flex items-center">
+        <img 
+          src={fondo} 
+          alt="decor" 
+          className="absolute -right-[650px] h-[900px] rotate-[20deg] opacity-15"
+        />
+        <img
+          src={fondo}
+          alt="decor2"
+          className="absolute h-[500px] w-[800px] left-[-600px] opacity-15 rotate-[210deg]"
+        />
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="bg-gray-800 rounded-xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            {/* Imagen izquierda */}
+            <div className="bg-white flex items-center justify-center">
+              <img
+                src={valor}
+                alt="Conoce el valor de tu propiedad"
+                className="w-full h-auto object-cover "
+                onError={(e: any) => { e.currentTarget.style.display = 'none'; }}
+              />
+            </div>
 
-              {/* Imagen derecha */}
-              <div className="flex justify-center">
-                <div className="w-80 h-96 bg-black rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-white text-2xl font-light mb-2">TORSSAM</div>
-                    <div className="text-gray-400 text-sm">Grupo Inmobiliario</div>
-                  </div>
-                </div>
-              </div>
+            {/* Panel derecho */}
+            <div className="p-8 md:p-12 bg-gray-900 text-white flex flex-col justify-center">
+              <div className="text-sm text-gray-300 mb-2 uppercase tracking-widest">TORSSAM GRUPO INMOBILIARIO</div>
+              <h2 className="text-2xl md:text-4xl font-semibold mb-4">Conoce El Valor De Tu Propiedad</h2>
+              <p className="text-gray-400 mb-6">Obtén un avalúo profesional y gratuito. Nuestro equipo te dará una evaluación real del mercado para que tomes la mejor decisión.</p>
+              {/*añadir la direccion*/}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition"
+                >
+                INICIAR AVALÚO
+              </a>
             </div>
           </div>
         </div>
+      </section>
     </div>
+
+   
     
   )
 }

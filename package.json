@@ -16,5 +16,8 @@
   "workspaces": [
     "frontend",
     "backend"
-  ]
+  ],
+  "dependencies": {
+    "react-icons": "^5.5.0"
+  }
 }

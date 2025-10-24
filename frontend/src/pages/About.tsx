@@ -1,11 +1,24 @@
 
+import hero from '../Public/Nosotros/video/Hero.mp4';
+import { useRef } from 'react';
 const About = () => {
+   const videoRef = useRef(null)
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Encabezado principal */}
+      
         <div className="relative flex flex-col items-center justify-center pt-32 pb-32 mb-12 w-full">
-        {/* Imagen de fondo detrás del encabezado */}
-        {/* <img src="/images/bg-nosotros.jpg" alt="Fondo Sobre Nosotros" className="absolute inset-0 w-full h-full object-cover opacity-30 -z-10" /> */}
+        
+       <video
+  ref={videoRef}
+  className="absolute top-0 left-0 w-full h-[95%] object-cover z-0 opacity-60"
+  autoPlay
+  loop
+  muted
+>
+  <source src={hero} type="video/mp4" />
+    Your browser does not support the video tag
+</video>
         <h1 className="text-5xl font-light text-center mb-6 z-10">Sobre Nosotros</h1>
         <p className="text-lg text-center text-gray-200 z-10">Tradición inmobiliaria con visión de futuro.</p>
       </div>

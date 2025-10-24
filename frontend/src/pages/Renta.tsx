@@ -1,16 +1,46 @@
+import { useEffect } from 'react';
 import prt1 from '../Public/Renta/nuestroProceso/1.png';
+import { FaBalanceScale, FaHome, FaIdCard, FaSmile } from 'react-icons/fa';
 import prt2 from '../Public/Renta/nuestroProceso/2.png';
 import prt3 from '../Public/Renta/nuestroProceso/3.png';
 import prt4 from '../Public/Renta/nuestroProceso/4.png';
 import prt5 from '../Public/Renta/nuestroProceso/5.png';
 import prt6 from '../Public/Renta/nuestroProceso/6.png';
-
+import fondo from '../Public/fondo.png';
+import hero from '../Public/image 6.png';
+import form_Img from '../Public/foto1.jpeg';
 
 const Renta = () => {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.classList.add('in-view');
+          } else {
+            // remove to allow replay when it re-enters
+            el.classList.remove('in-view');
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    const els = document.querySelectorAll('.fade-in-up');
+    els.forEach((e) => observer.observe(e));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black text-white">
+  <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Sección principal - Hero */}
-      <div className="relative min-h-[80vh] flex items-center justify-center">
+        <div className="relative min-h-[90vh] flex items-center justify-center">
+       <div className="absolute inset-0 bg-[#1a1a1a] bg-opacity-60">
+                <img src={hero} alt="Background" className="w-full h-[100%] object-cover "/>
+              </div>
         {/* Fondo con overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         
@@ -30,7 +60,9 @@ const Renta = () => {
             }}
           >
             Renta Tu Propiedad De<br />
-            Forma Ágil y Segura
+            Forma Segura, Rápida y<br />
+            Sin Estrés
+
           </h2>
           <p 
             className="mb-12 max-w-2xl mx-auto"
@@ -50,38 +82,95 @@ const Renta = () => {
           </p>
         </div>
       </div>
-
-      {/* Sección de información */}
-      <div className="bg-gray-100 py-20">
+      {/* Sección Por Qué Alquilar con TORSSAM */}
+      <div className="bg-black py-20 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="text-gray-600 mb-8">
-            <p className="text-sm tracking-wide">Torssa Grupo Inmobiliario</p>
-          </div>
-          
-          <div className="text-black">
-            <p 
-              style={{
-                color: '#000000',
-                textAlign: 'center',
-                fontFamily: '"Poltawski Nowy", serif',
-                fontSize: '32px',
-                lineHeight: '98.76%',
-                fontWeight: 500,
-                position: 'relative'
-              }}
-            >
-              En Torssa entendemos que rentar una<br />
-              propiedad es una decisión importante. Por eso te<br />
-              acompañamos desde la valuación hasta encontrar<br />
-              al inquilino perfecto, garantizando transparencia,<br />
-              confianza y resultados.
-            </p>
+          <h2 className="text-5xl mb-12" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+            ¿Por Qué Alquilar con TORSSAM?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-x-8 gap-y-12 text-left">
+            <div className="flex items-start space-x-4">
+              <FaBalanceScale className="text-4xl text-white" />
+              <div>
+                <p className="text-xl">Proceso 100% profesional y respaldado legalmente.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <FaHome className="text-4xl text-white" />
+              <div>
+                <p className="text-xl">Difusión efectiva y rápida ocupación.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <FaIdCard className="text-4xl text-white" />
+              <div>
+                <p className="text-xl">Filtrado estricto de inquilinos.</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <FaSmile className="text-4xl text-white" />
+              <div>
+                <p className="text-xl">Tranquilidad total: tú cobras, nosotros gestionamos.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      {/* Results + Proceso wrapper (single decorative image shared) */}
+      <div className="relative">
+        {/* decorative background image positioned top-right and visible across both sections */}
 
-      {/* Sección Conoce Nuestro Proceso */}
-        <div className="bg-black py-20">
+        {/* Results Section */}
+        <section className="py-16 bg-[#060606] text-white border-b border-gray-800">
+          <div className="max-w-7xl mx-auto px-4 relative">
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-12 tracking-wide">
+            Nuestros Resultados
+          </h2>
+          {/*FONDOS DECORATIVOS*/}
+<img 
+  src={fondo} 
+  alt="decor" 
+  className="absolute -right-[500px] -top-[100px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15"
+/>
+<img
+  src={fondo}
+  alt="decor2"
+  className="absolute right-[1000px] top-[800px] rotate-[90deg] w-[600px] md:w-[800px] opacity-15"
+/>
+<img
+  src={fondo}
+  alt="decor2"
+  className="absolute -right-[600px] top-[1300px] rotate-[310deg] w-[600px] md:w-[800px] opacity-15"
+/>
+
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Stat 1 */}
+                   <div className="text-center">
+              <p className="text-5xl md:text-6xl font-light mb-2">+2 mil</p>
+              <p className="text-gray-400 text-lg">Unidades Vendidas</p>
+            </div>
+            
+            {/* Stat 2 */}
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-light mb-2">+20 mil</p>
+              <p className="text-gray-400 text-lg">Clientes Atendidos</p>
+            </div>
+            
+            {/* Stat 3 */}
+            <div className="text-center">
+              <p className="text-5xl md:text-6xl font-light mb-2">+3 mil</p>
+              <p className="text-gray-400 text-lg">Unidades Rentadas</p>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8"></div>
+        </div>
+        
+      </section>
+
+        {/* Sección Conoce Nuestro Proceso */}
+        <div className="bg-[#000000] py-20">
         <div className="max-w-4xl mx-auto px-4">
           {/* Título */}
           <h2 className="text-4xl font-light text-white text-center mb-16">
@@ -96,32 +185,31 @@ const Renta = () => {
 {/*animación de los pasos*/}
             <style>{`
   @keyframes fadeInUp {
-  from {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Start hidden; when .in-view is added the animation runs */
+  .fade-in-up {
     opacity: 0;
-    transform: translateY(20px) scale(0.25);
+    transform: translateY(20px) scale(0.95);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+
+  .fade-in-up.in-view {
+    animation: fadeInUp 0.8s ease-out both;
   }
-}
-
-.fade-in-up {
-  animation-name: fadeInUp;
-  animation-duration: 0.8s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: both;
-
-  /* View Timeline Animation */
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
-}
-  } `}</style>
+`}</style>
 
 
 
             {/* Paso 1 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
               <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 1
               </div>
@@ -140,7 +228,7 @@ const Renta = () => {
 
 
             {/* Paso 2 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
               <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 2
               </div>
@@ -158,7 +246,7 @@ const Renta = () => {
             </div>
 
             {/* Paso 3 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
               <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 3
               </div>
@@ -176,7 +264,7 @@ const Renta = () => {
             </div>
 
             {/* Paso 4 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
               <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 4
               </div>
@@ -188,13 +276,13 @@ const Renta = () => {
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt4}alt="Gestión de Interesados" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt4}alt="Gestión de Interesados" className="w-[350px] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
                 </div>
               </div>
             </div>
 
             {/* Paso 5 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
               <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 5
               </div>
@@ -212,7 +300,7 @@ const Renta = () => {
             </div>
 
             {/* Paso 6 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 rounded shadow">
+            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
               <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
                 6
               </div>
@@ -231,88 +319,36 @@ const Renta = () => {
           </div>
         </div>
       </div>
+      
       {/* Sección Formulario */}
-      <div className="bg-gray-900 py-20">
+      <div className="bg-[#060606] py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Formulario - Izquierda */}
-            <div className="bg-white rounded-lg p-8">
-              <div className="mb-6 text-center">
-                <p className="text-gray-600 text-sm mb-4 tracking-wide" style={{fontFamily: "Montserrat, sans-serif"}}>TORSSA GRUPO INMOBILIARIO</p>
-                <h2 className="text-4xl font-bold text-black mb-2 px-8" style={{fontFamily: '"Poltawski Nowy", serif', letterSpacing: '2px'}}>
-                  Iniciemos El<br />
-                  Proceso Juntos
-                </h2>
-              </div>
-
-              <form className="space-y-4">
-                {/* Nombre Completo */}
-                <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Ingresa tu nombre completo
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nombre Completo"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
-                  />
-                </div>
-
-                {/* Teléfono */}
-                <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Ingresa tu teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="Teléfono"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
-                  />
-                </div>
-
-                {/* Tipo de Propiedad */}
-                <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Selecciona el Tipo de Propiedad
-                  </label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent text-gray-500">
-                    <option>Tipo de Propiedad</option>
-                    <option>Casa</option>
-                    <option>Departamento</option>
-                    <option>Terreno</option>
-                    <option>Local Comercial</option>
-                  </select>
-                </div>
-
-                {/* Ubicación */}
-                <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-2">
-                    Ingresa tu ubicación
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ubicación"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
-                  />
-                </div>
-
-                {/* Botón Enviar */}
-                <button
-                  type="submit"
-                  className="w-full bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition-colors font-medium mt-6"
-                >
-                  Enviar Mensaje
-                </button>
-              </form>
+            {/* Contenido - Izquierda */}
+            <div className="text-white">
+              <p className="text-sm mb-4 tracking-wide text-gray-300" style={{fontFamily: "Montserrat, sans-serif"}}>
+                TORSSA GRUPO INMOBILIARIO
+              </p>
+              <h2 className="text-5xl font-bold mb-8 leading-tight" style={{fontFamily: '"Poltawski Nowy", serif'}}>
+                ¿Listo para rentar tu propiedad sin preocupaciones?
+              </h2>
+              <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors">
+                MANDANOS UN MENSAJE
+              </button>
             </div>
 
-            {/* Logo TORSSA - Derecha */}
-            <div className="bg-white rounded-lg p-8 flex items-center justify-center min-h-full">
-              <img src="/logotorssam.webp" alt="TORSSA Logo" className="w-96 h-auto object-contain" />
+            {/* Imagen - Derecha */}
+            <div className="flex justify-center">
+              <img 
+                src={form_Img} 
+                alt="City buildings" 
+                className="w-full max-w-lg h-auto object-cover rounded-lg"
+              />
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

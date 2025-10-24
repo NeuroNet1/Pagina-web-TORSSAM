@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import hero from '../Public/Hero1.mp4'
 
 const Propiedades = () => {
   const navigate = useNavigate();
   const [filtroTab, setFiltroTab] = useState('renta');
-
+  const videoRef = useRef(null);
   // Array de propiedades de ejemplo
   const propiedades = [
     {
@@ -95,71 +96,74 @@ const Propiedades = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="bg-black py-32 text-center">
-        <h1 className="text-5xl md:text-6xl font-light mb-12 tracking-wide">
-          Encuentra tu Próxima<br />
-          Propiedad con Nosotros.
-        </h1>
-        
-        {/* Tabs EN VENTA / EN RENTA */}
-        <div className="max-w-3xl mx-auto px-4 mb-12">
-          <div className="flex justify-center gap-12 mb-8 border-b border-gray-600 pb-6">
-            <button
-              onClick={() => setFiltroTab('venta')}
-              className={`text-lg font-light transition-colors ${
-                filtroTab === 'venta'
-                  ? 'text-white border-b-2 border-white pb-2'
-                  : 'text-gray-500 hover:text-gray-300'
-              }`}
-            >
-              EN VENTA
-            </button>
-            <button
-              onClick={() => setFiltroTab('renta')}
-              className={`text-lg font-light transition-colors ${
-                filtroTab === 'renta'
-                  ? 'text-white border-b-2 border-white pb-2'
-                  : 'text-gray-500 hover:text-gray-300'
-              }`}
-            >
-              EN RENTA
-            </button>
-          </div>
 
-          {/* Buscador */}
-          <div className="flex flex-col gap-6">
-            <div className="grid grid-cols-3 gap-6">
-              <div>
-                <label className="text-gray-400 text-xs uppercase mb-3 block">Tipo de Propiedad *</label>
-                <select className="w-full px-6 py-4 bg-white text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400">
-                  <option>Todos</option>
-                  <option>Casa</option>
-                  <option>Departamento</option>
-                  <option>Terreno</option>
-                  <option>Local Comercial</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-gray-400 text-xs uppercase mb-3 block">Ubicación *</label>
-                <input
-                  type="text"
-                  placeholder="Todo México"
-                  className="w-full px-6 py-4 bg-white text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
-                />
-              </div>
-              <div className="flex items-end">
-                <button className="w-full px-6 py-4 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition-colors">
-                  BUSCAR
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
+          playsInline
+          autoPlay
+          loop
+          muted
+          preload="auto"
+        >
+          <source src={hero} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div className="relative z-10 w-full">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-6xl font-light mb-8 md:mb-12 tracking-wide text-white">
+              Encuentra tu Próxima<br />
+              Propiedad con Nosotros.
+            </h1>
+
+            {/* Tabs EN VENTA / EN RENTA */}
+            <div className="max-w-3xl mx-auto px-4 mb-8">
+              <div className="flex justify-center gap-12 mb-6">
+                <button
+                  onClick={() => setFiltroTab('venta')}
+                  className={`text-lg font-light transition-colors ${
+                    filtroTab === 'venta' ? 'text-white border-b-2 border-white pb-2' : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  EN VENTA
+                </button>
+                <button
+                  onClick={() => setFiltroTab('renta')}
+                  className={`text-lg font-light transition-colors ${
+                    filtroTab === 'renta' ? 'text-white border-b-2 border-white pb-2' : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  EN RENTA
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
 
-        {/* Total de propiedades */}
-        <div className="max-w-7xl mx-auto px-4 mt-16">
-          <p className="text-gray-400">Todas las Propiedades Disponibles: {propiedades.length}</p>
+              {/* Buscador - card */}
+              <div className="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 md:p-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                  <div>
+                    <label className="sr-only">Tipo</label>
+                    <select className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none">
+                      <option className="text-black">Todos</option>
+                      <option className="text-black">Casa</option>
+                      <option className="text-black">Departamento</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="sr-only">Ubicación</label>
+                    <input type="text" placeholder="Todo México" className="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-md text-white placeholder-white placeholder-opacity-70 focus:outline-none" />
+                  </div>
+                  <div>
+                    <button className="w-full bg-white text-black px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition">BUSCAR</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-8 text-gray-300">Todas las Propiedades Disponibles: {propiedades.length}</p>
+          </div>
         </div>
       </section>
 
