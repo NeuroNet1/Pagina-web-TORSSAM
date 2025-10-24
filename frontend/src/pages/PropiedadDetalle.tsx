@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { FaMapMarkerAlt, FaBed, FaBath, FaCar, FaRuler } from 'react-icons/fa'
 
 const PropiedadDetalle = () => {
+  const { id } = useParams();
   const [imagenPrincipal, setImagenPrincipal] = useState(0);
 
   // Datos de la propiedad (en una aplicación real, vendrían de una API o parámetro de ruta)
@@ -22,7 +25,12 @@ const PropiedadDetalle = () => {
       banos: 2,
       cocheras: 2,
       areaConstruida: '250 m²',
-      areaTerreno: '300 m²'
+      areaTerreno: '300 m²',
+      datosTecnicos: {
+        habitables: '169 m²',
+        balcon: '0.62 m²',
+        terraza: '0.62 m²'
+      }
     },
     amenidades: [
       'Roof garden privado',
@@ -55,20 +63,23 @@ const PropiedadDetalle = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header con título, ubicación y precio */}
-      <section className="bg-black py-6 px-4">
+      <section className="bg-black py-6 px-4 border-b border-gray-800">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-start mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
             <div className="flex-1">
-              <h1 className="text-xl font-light mb-2">
+              <h1 className="text-2xl md:text-3xl font-light mb-3">
                 {propiedad.titulo}
               </h1>
               <p className="text-gray-400 text-sm flex items-center">
-                <span className="mr-2">📍</span>
-                Colonia Condesa, Cuauhtémoc, Ciudad de México
+                <FaMapMarkerAlt className="mr-2 text-white" />
+                {propiedad.ubicacion}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-4xl font-light">${propiedad.precio.toLocaleString()}</p>
+              <div className="bg-white/10 px-6 py-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">Precio</p>
+                <p className="text-4xl font-light">${propiedad.precio.toLocaleString()} MXN</p>
+              </div>
             </div>
           </div>
         </div>
@@ -76,79 +87,115 @@ const PropiedadDetalle = () => {
 
       {/* Contenido principal */}
       <section className="max-w-7xl mx-auto px-4 py-8">
+        {/* Galería de imágenes */}
+        <div className="mb-8">
+          {/* Imagen principal */}
+          <div className="mb-4 h-[500px] bg-gray-900 rounded-lg overflow-hidden relative group">
+            <img 
+              src={propiedad.imagenes[imagenPrincipal]} 
+              alt="Propiedad" 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+
+          {/* Miniaturas */}
+          <div className="grid grid-cols-5 gap-3 mb-8">
+            {propiedad.imagenes.map((imagen, index) => (
+              <button
+                key={index}
+                onClick={() => setImagenPrincipal(index)}
+                className={`aspect-[4/3] rounded-lg overflow-hidden relative ${
+                  imagenPrincipal === index 
+                    ? 'ring-2 ring-white ring-offset-2 ring-offset-black' 
+                    : 'hover:opacity-80'
+                } transition-all duration-300`}
+              >
+                <img 
+                  src={imagen} 
+                  alt={`Imagen ${index + 1}`} 
+                  className="w-full h-full object-cover"
+                />
+                {imagenPrincipal === index && (
+                  <div className="absolute inset-0 bg-white/10"></div>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Botones de acción */}
+          <div className="flex gap-3 mb-8">
+            <button className="px-3 py-2 bg-gray-800 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors">
+              💾 Favorito
+            </button>
+            <button className="px-3 py-2 bg-gray-800 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors">
+              📸 Imágenes
+            </button>
+            <button className="px-3 py-2 bg-gray-800 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors">
+              🎬 Videos
+            </button>
+          </div>
+        </div>
+
+        {/* Contenido descriptivo y panel de contacto */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Galería de imágenes - Izquierda */}
+          {/* Descripción y características - Izquierda */}
           <div className="lg:col-span-2">
-            {/* Imagen principal */}
-            <div className="mb-4 h-80 bg-gray-900 rounded-lg overflow-hidden">
-              <img 
-                src={propiedad.imagenes[imagenPrincipal]} 
-                alt="Propiedad" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Miniaturas */}
-            <div className="flex gap-2 mb-8">
-              {propiedad.imagenes.map((imagen, index) => (
-                <button
-                  key={index}
-                  onClick={() => setImagenPrincipal(index)}
-                  className={`w-16 h-16 rounded overflow-hidden border-2 transition-all flex-shrink-0 ${
-                    imagenPrincipal === index ? 'border-white' : 'border-gray-700'
-                  }`}
-                >
-                  <img src={imagen} alt={`Imagen ${index + 1}`} className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
-
-            {/* Botones de acción */}
-            <div className="flex gap-3 mb-8">
-              <button className="px-3 py-2 bg-gray-800 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors">
-                💾 Favorito
-              </button>
-              <button className="px-3 py-2 bg-gray-800 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors">
-                📸 Imágenes
-              </button>
-              <button className="px-3 py-2 bg-gray-800 text-white text-xs font-medium rounded hover:bg-gray-700 transition-colors">
-                🎬 Videos
-              </button>
-            </div>
-
-            {/* Descripción */}
             <div className="mb-12">
               <h2 className="text-xl font-light mb-4">Descripción de la Propiedad</h2>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                {propiedad.descripcion}
-              </p>
-
-              {/* Características */}
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">{propiedad.descripcion}</p>
+              
               <div className="mb-6">
-                <h3 className="text-sm font-light mb-3">Características</h3>
+                <h3 className="text-sm font-light mb-3">Características Principales</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                  <div className="flex items-center">
+                    <FaBed className="text-2xl mr-3 text-white/80" />
+                    <div>
+                      <p className="text-xs text-gray-400">Recámaras</p>
+                      <p className="text-sm font-medium">{propiedad.caracteristicas.recamaras}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <FaBath className="text-2xl mr-3 text-white/80" />
+                    <div>
+                      <p className="text-xs text-gray-400">Baños</p>
+                      <p className="text-sm font-medium">{propiedad.caracteristicas.banos}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <FaCar className="text-2xl mr-3 text-white/80" />
+                    <div>
+                      <p className="text-xs text-gray-400">Cocheras</p>
+                      <p className="text-sm font-medium">{propiedad.caracteristicas.cocheras}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <FaRuler className="text-2xl mr-3 text-white/80" />
+                    <div>
+                      <p className="text-xs text-gray-400">Área</p>
+                      <p className="text-sm font-medium">{propiedad.caracteristicas.areaConstruida}</p>
+                    </div>
+                  </div>
+                </div>
                 <div className="grid grid-cols-2 gap-2 text-xs text-gray-300">
                   <p>• Sala-comedor con balcón</p>
                   <p>• Cocina abierta</p>
                   <p>• Área de lavandería</p>
-                  <p>• 2 recámaras con baño completo</p>
                   <p>• La principal con vestidor</p>
-                  <p>• 3 baños en total</p>
-                  <p>• Cuarto de TV con acceso a terraza</p>
-                  <p>• 2 cocheras de estacionamiento fijo</p>
+                  <p>• Cuarto de TV con terraza</p>
+                  <p>• Estacionamiento techado</p>
                 </div>
               </div>
 
-              {/* Datos técnicos */}
               <div className="mb-6">
                 <h3 className="text-sm font-light mb-3">Datos Técnicos</h3>
                 <div className="grid grid-cols-2 gap-2 text-xs text-gray-300">
-                  <p>• 169 m2 habitables</p>
-                  <p>• 0.62 m2 balcón</p>
-                  <p>• 0.62 m2 terraza</p>
+                  <p>• {propiedad.caracteristicas.datosTecnicos.habitables} habitables</p>
+                  <p>• {propiedad.caracteristicas.datosTecnicos.balcon} balcón</p>
+                  <p>• {propiedad.caracteristicas.datosTecnicos.terraza} terraza</p>
                 </div>
               </div>
 
-              {/* Mantenimiento */}
               <div className="mb-6">
                 <h3 className="text-sm font-light mb-3">Mantenimiento Incluido</h3>
                 <div className="text-xs text-gray-300">
@@ -156,7 +203,6 @@ const PropiedadDetalle = () => {
                 </div>
               </div>
 
-              {/* Amenidades */}
               <div>
                 <h3 className="text-sm font-light mb-3">Amenidades</h3>
                 <div className="grid grid-cols-2 gap-2 text-xs text-gray-300">
@@ -168,28 +214,39 @@ const PropiedadDetalle = () => {
             </div>
           </div>
 
-          {/* Información de contacto - Derecha */}
+          {/* Panel de contacto - Derecha */}
           <div>
-            <div className="bg-gray-900 rounded-lg p-6 sticky top-20">
+            <div className="bg-white rounded-lg p-6 sticky top-20">
               <div className="mb-6">
-                <span className="bg-white text-black px-2 py-1 text-xs font-medium inline-block mb-3">VENTA</span>
-                <h3 className="text-sm font-light mb-1">{propiedad.agente.nombre}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed mb-3">{propiedad.agente.subtitulo}</p>
-                <p className="text-gray-400 text-xs">$67,000</p>
+                <span className="bg-black text-white px-3 py-1 text-xs font-medium rounded inline-block mb-4">VENTA</span>
+                <h3 className="text-xl font-bold mb-2 text-black">Departamento Penthouse</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">en renta Amsterdam, Cauddesa - Con roof garden privado</p>
+                <p className="text-black font-bold text-2xl mb-4">$67,000</p>
+                <div className="flex items-center gap-4 mb-4 text-gray-500">
+                  <p className="text-xs">ID: TOR-1</p>
+                  <p className="text-xs">Ref: 2025-0001</p>
+                </div>
               </div>
 
-              <button className="w-full bg-white text-black py-3 px-4 rounded font-medium mb-3 hover:bg-gray-100 transition-colors text-sm">
+              <button className="w-full bg-black text-white py-3 px-4 rounded font-medium mb-3 hover:bg-gray-900 transition-all duration-300">
                 Agendar Visita
               </button>
-              <button className="w-full bg-gray-800 text-white py-3 px-4 rounded font-medium hover:bg-gray-700 transition-colors text-sm">
+              <button className="w-full border border-black text-black py-3 px-4 rounded font-medium hover:bg-gray-50 transition-all duration-300">
                 Contactar
               </button>
 
-              <div className="border-t border-gray-700 mt-6 pt-6">
-                <p className="text-gray-400 text-xs mb-4">TIPO DE PROPIEDAD</p>
-                <div className="space-y-2">
-                  <p className="text-sm">Departamento</p>
-                  <p className="text-sm">Terreno</p>
+              <div className="border-t border-gray-200 mt-6 pt-6 space-y-4">
+                <div>
+                  <p className="text-gray-500 text-xs mb-2">TIPO DE PROPIEDAD</p>
+                  <p className="text-black">Departamento</p>
+                </div>
+                <div>
+                  <p className="text-gray-500 text-xs mb-2">TERRENO</p>
+                  <p className="text-black">{propiedad.caracteristicas.areaTerreno}</p>
+                </div>
+                <div>
+                  <p className="text-gray-500 text-xs mb-2">FECHA DE PUBLICACIÓN</p>
+                  <p className="text-black">24/10/2025</p>
                 </div>
               </div>
             </div>

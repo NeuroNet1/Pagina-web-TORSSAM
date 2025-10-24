@@ -4,24 +4,49 @@ import { useRef } from 'react';
 const About = () => {
    const videoRef = useRef(null)
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen bg-black text-white flex flex-col pt-[10px]">
       {/* Encabezado principal */}
       
-        <div className="relative flex flex-col items-center justify-center pt-32 pb-32 mb-12 w-full">
-        
-       <video
-  ref={videoRef}
-  className="absolute top-0 left-0 w-full h-[95%] object-cover z-0 opacity-60"
-  autoPlay
-  loop
-  muted
->
-  <source src={hero} type="video/mp4" />
-    Your browser does not support the video tag
-</video>
-        <h1 className="text-5xl font-light text-center mb-6 z-10">Sobre Nosotros</h1>
-        <p className="text-lg text-center text-gray-200 z-10">Tradición inmobiliaria con visión de futuro.</p>
-      </div>
+        <section className="relative min-h-screen bg-black text-white flex items-center">
+          <div className="absolute top-0 left-0 w-full h-[95%] z-0">
+            {/* Capa de degradado sutil */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 to-transparent z-10"></div>
+            <div className="absolute inset-0 bg-black/20 z-10"></div>
+            <video
+              ref={videoRef}
+              className="absolute top-0 left-0 w-full h-full object-cover opacity-90"
+              autoPlay
+              loop
+              muted
+              playsInline
+              onPlay={(e) => {
+                const video = e.target as HTMLVideoElement;
+                video.playbackRate = 0.75; // Reproducir al 75% de la velocidad normal
+              }}
+            >
+              <source src={hero} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          <div className="relative max-w-7xl mx-auto px-4 text-center z-20">
+            <h1 
+              className="text-6xl md:text-7xl font-light text-center mb-8" 
+              style={{ fontFamily: '"Poltawski Nowy", serif' }}
+            >
+              Sobre Nosotros
+            </h1>
+            <p 
+              className="text-2xl md:text-4xl text-center text-white font-medium tracking-wide"
+              style={{ 
+                fontFamily: 'Montserrat, sans-serif',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+              }}
+            >
+              Tradición inmobiliaria con <span className="font-bold">visión de futuro</span>
+            </p>
+          </div>
+        </section>
 
       {/* Sección principal con bloques */}
       <div className="max-w-5xl w-full mx-auto px-4 flex flex-col gap-16 mb-20">

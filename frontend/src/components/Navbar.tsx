@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-black text-white relative">
+    <nav className="bg-black text-white fixed w-full top-0 left-0 z-[999]">
       {/* Header superior solo con teléfono y español */}
       <div className="border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-3">

@@ -1,12 +1,16 @@
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import prt1 from '../Public/Ventas/nuestroproceso/prt1.png';
 import prt2 from '../Public/Ventas/nuestroproceso/prt2.png';
+import form_Img from '../Public/foto1.jpeg';
 import prt3 from '../Public/Ventas/nuestroproceso/prt3.png';
 import prt4 from '../Public/Ventas/nuestroproceso/prt4.png';
 import prt5 from '../Public/Ventas/nuestroproceso/prt5.png';
-import hero from '../Public/Ventas/overley_Venta/descarga.png';
+import hero from '../Public/Propiedades/hero (2).mp4';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaUserCheck, FaBalanceScale, FaLightbulb, FaChartLine } from 'react-icons/fa';
 import fondo from '../Public/fondo.png';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 
 const Venta = () => {
   useEffect(() => {
@@ -40,6 +44,7 @@ const Venta = () => {
         </div>
         {/* Filtro oscuro */}
        <div className="absolute inset-0 bg-black bg-opacity-55"></div>
+       
 
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
@@ -84,29 +89,80 @@ const Venta = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Confianza Profesional */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg">
-              <FaUserCheck className="text-4xl mb-4 mx-auto" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-white text-black p-8 rounded-lg shadow-lg"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+              >
+                <FaUserCheck className="text-4xl mb-4 mx-auto" />
+              </motion.div>
               <h3 className="text-2xl font-bold mb-2">Confianza Profesional</h3>
               <p className="text-gray-600">Te asesoramos con base en experiencia y datos reales.</p>
-            </div>
+            </motion.div>
+
             {/* Acompañamiento Legal */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg">
-              <FaBalanceScale className="text-4xl mb-4 mx-auto" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="bg-white text-black p-8 rounded-lg shadow-lg"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                <FaBalanceScale className="text-4xl mb-4 mx-auto" />
+              </motion.div>
               <h3 className="text-2xl font-bold mb-2">Acompañamiento Legal</h3>
               <p className="text-gray-600">Desde la documentación hasta la escritura.</p>
-            </div>
+            </motion.div>
+
             {/* Estrategia Comercial */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg">
-              <FaLightbulb className="text-4xl mb-4 mx-auto" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="bg-white text-black p-8 rounded-lg shadow-lg"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.7 }}
+              >
+                <FaLightbulb className="text-4xl mb-4 mx-auto" />
+              </motion.div>
               <h3 className="text-2xl font-bold mb-2">Estrategia Comercial</h3>
               <p className="text-gray-600">Sabemos cómo posicionar tu propiedad y atraer a los compradores correctos.</p>
-            </div>
+            </motion.div>
+
             {/* Resultados Tangibles */}
-            <div className="bg-white text-black p-8 rounded-lg shadow-lg">
-              <FaChartLine className="text-4xl mb-4 mx-auto" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="bg-white text-black p-8 rounded-lg shadow-lg"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.9 }}
+              >
+                <FaChartLine className="text-4xl mb-4 mx-auto" />
+              </motion.div>
               <h3 className="text-2xl font-bold mb-2">Resultados Tangibles</h3>
               <p className="text-gray-600">Tu propiedad se vende, no se estanca.</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -138,22 +194,88 @@ const Venta = () => {
     
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Stat 1 */}
-                       <div className="text-center">
-                  <p className="text-5xl md:text-6xl font-light mb-2">+2 mil</p>
-                  <p className="text-gray-400 text-lg">Unidades Vendidas</p>
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-center bg-black/20 backdrop-blur-sm p-6 rounded-lg"
+                >
+                  <motion.div
+                    className="text-4xl md:text-5xl font-light mb-4 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
+                    <span className="mr-1">+</span>
+                    <CountUp
+                      end={2}
+                      duration={2}
+                      separator=","
+                      useEasing={true}
+                      enableScrollSpy={true}
+                      scrollSpyDelay={200}
+                    />
+                    <span className="ml-2 text-3xl md:text-4xl">mil</span>
+                  </motion.div>
+                  <p className="text-gray-300 text-lg font-light tracking-wide">Unidades Vendidas</p>
+                </motion.div>
                 
                 {/* Stat 2 */}
-                <div className="text-center">
-                  <p className="text-5xl md:text-6xl font-light mb-2">+20 mil</p>
-                  <p className="text-gray-400 text-lg">Clientes Atendidos</p>
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-center bg-black/20 backdrop-blur-sm p-6 rounded-lg"
+                >
+                  <motion.div
+                    className="text-4xl md:text-5xl font-light mb-4 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                  >
+                    <span className="mr-1">+</span>
+                    <CountUp
+                      end={20}
+                      duration={2}
+                      separator=","
+                      useEasing={true}
+                      enableScrollSpy={true}
+                      scrollSpyDelay={200}
+                    />
+                    <span className="ml-2 text-3xl md:text-4xl">mil</span>
+                  </motion.div>
+                  <p className="text-gray-300 text-lg font-light tracking-wide">Clientes Atendidos</p>
+                </motion.div>
                 
                 {/* Stat 3 */}
-                <div className="text-center">
-                  <p className="text-5xl md:text-6xl font-light mb-2">+3 mil</p>
-                  <p className="text-gray-400 text-lg">Unidades Rentadas</p>
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center bg-black/20 backdrop-blur-sm p-6 rounded-lg"
+                >
+                  <motion.div
+                    className="text-4xl md:text-5xl font-light mb-4 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                  >
+                    <span className="mr-1">+</span>
+                    <CountUp
+                      end={3}
+                      duration={2}
+                      separator=","
+                      useEasing={true}
+                      enableScrollSpy={true}
+                      scrollSpyDelay={200}
+                    />
+                    <span className="ml-2 text-3xl md:text-4xl">mil</span>
+                  </motion.div>
+                  <p className="text-gray-300 text-lg font-light tracking-wide">Unidades Rentadas</p>
+                </motion.div>
               </div>
               
               <div className="border-t border-gray-800 mt-12 pt-8"></div>
@@ -162,40 +284,48 @@ const Venta = () => {
           </section>
       {/* Sección Conoce Nuestro Proceso */}
       <div className="bg-black py-20">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           {/* Título */}
-          <h2 className="text-4xl font-light text-white text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-light text-white text-center mb-20"
+          >
             Conoce Nuestro<br />
             Proceso de venta paso a paso
-          </h2> 
+          </motion.h2> 
 
           {/* Pasos del proceso */}
           <div className="relative">
             {/* Línea vertical conectora (centrada) */}
-            <div className="absolute left-1/2 top-6 bottom-6 w-px bg-white  -translate-x-1/2 "></div>
-              {/*animación de los pasos*/}
-              <style>{`
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
+            <motion.div 
+              initial={{ height: 0 }}
+              whileInView={{ height: "100%" }}
+              transition={{ duration: 1.5 }}
+              className="absolute left-1/2 top-6 bottom-6 w-1 bg-white/30 -translate-x-1/2"
+            ></motion.div>
+            <style>{`
+              @keyframes fadeInUp {
+                from {
+                  opacity: 0;
+                  transform: translateY(20px) scale(0.95);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0) scale(1);
+                }
+              }
 
-    /* Start hidden; when .in-view is added the animation runs */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-    }
+              .fade-in-up {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+              }
 
-    .fade-in-up.in-view {
-      animation: fadeInUp 0.8s ease-out both;
-    }
-  `}</style>
+              .fade-in-up.in-view {
+                animation: fadeInUp 0.8s ease-out both;
+              }
+            `}</style>
 
 
             {/* Paso 1 */}
@@ -205,11 +335,13 @@ const Venta = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
                 <div className="flex justify-center sm:justify-end">
-                  <img src={prt1} alt="Auditoría Documental" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                  <img src={prt1} alt="Auditoría Documental" className="w-[400px] h-[300px] object-cover rounded-[10px] pr-10 hidden sm:block" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2">Auditoría Documental y Legal</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="text-white p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Auditoría Documental y Legal
+                  </h3>
+                  <p className="text-gray-100 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Revisamos que toda la documentación esté en regla para una transacción sin contratiempos. Nos encargamos de cada detalle legal para proteger tu patrimonio.
                   </p>
                 </div>
@@ -223,14 +355,16 @@ const Venta = () => {
                 2
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-                <div className="order-2 sm:order-1 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Análisis de Mercado y Valuación Profesional</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="order-2 sm:order-1 text-white p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Análisis de Mercado y Valuación Profesional
+                  </h3>
+                  <p className="text-gray-100 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Analizamos el mercado para definir el mejor precio de venta. Nuestro equipo te orienta para maximizar el valor de tu propiedad.
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt2} alt="Análisis Inicial" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt2} alt="Análisis Inicial" className="w-[400px] h-[300px] object-cover rounded-[10px] pl-10 hidden sm:block" />
                 </div>
               </div>
             </div>
@@ -242,11 +376,13 @@ const Venta = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
                 <div className="flex justify-center sm:justify-end">
-                  <img src={prt3}  alt="Estrategia de Comercialización" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                  <img src={prt3}  alt="Estrategia de Comercialización" className="w-[400px] h-[300px] object-cover rounded-[10px] pr-10 hidden sm:block" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2">Estrategia de Comercialización y Marketing Digital</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="text-white p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Estrategia de Comercialización y Marketing Digital
+                  </h3>
+                  <p className="text-gray-100 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Creamos un plan de marketing para que tu propiedad llegue a los compradores correctos: publicación en portales, redes sociales y nuestra base de datos.
                   </p>
                 </div>
@@ -259,14 +395,16 @@ const Venta = () => {
                 4
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-                <div className="order-2 sm:order-1 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Gestión de Visitas y Filtro de Compradores</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="order-2 sm:order-1 text-white p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Gestión de Visitas y Filtro de Compradores
+                  </h3>
+                  <p className="text-gray-100 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Coordinamos las visitas y filtramos a los compradores potenciales para asegurar que solo los más serios conozcan tu propiedad.
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt4}alt="Gestión de Interesados" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt4}alt="Gestión de Interesados" className="w-[400px] h-[300px] object-cover rounded-[10px] pl-10 hidden sm:block" />
                 </div>
               </div>
             </div>
@@ -278,11 +416,13 @@ const Venta = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
                 <div className="flex justify-center sm:justify-end">
-                  <img src={prt5}alt="Negociación y Ofertas" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                  <img src={prt5}alt="Negociación y Ofertas" className="w-[400px] h-[300px] object-cover rounded-[10px] pr-10 hidden sm:block" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2">Negociación y Cierre de la Venta</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="text-white p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Negociación y Cierre de la Venta
+                  </h3>
+                  <p className="text-gray-100 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Negociamos las mejores condiciones para ti y te acompañamos en la firma del contrato de compraventa.
                   </p>
                 </div>
@@ -295,14 +435,16 @@ const Venta = () => {
                 6
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-                <div className="order-2 sm:order-1 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Firma de Escrituras y Entrega de la Propiedad</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="order-2 sm:order-1 text-white p-6 bg-black/30 rounded-lg backdrop-blur-sm">
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Firma de Escrituras y Entrega de la Propiedad
+                  </h3>
+                  <p className="text-gray-100 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Te asistimos en el proceso notarial hasta la entrega de llaves, asegurando que todo se realice de forma transparente y segura.
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt1}  alt="Firma y Cierre" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt1}  alt="Firma y Cierre" className="w-[400px] h-[300px] object-cover rounded-[10px] pl-10 hidden sm:block" />
                 </div>
               </div>
             </div>
@@ -330,7 +472,7 @@ const Venta = () => {
                  {/* Imagen - Derecha */}
                  <div className="flex justify-center">
                    <img 
-                     src={hero} 
+                     src={form_Img} 
                      alt="City buildings" 
                      className="w-full max-w-lg h-auto object-cover rounded-lg"
                    />

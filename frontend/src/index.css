@@ -8,6 +8,39 @@
 }
 
 @tailwind base;
+
+/* Ocultar la barra de desplazamiento pero mantener la funcionalidad */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Para IE y Edge */
+* {
+  -ms-overflow-style: none;
+}
+
+/* Asegurarse de que el contenido no se vea afectado por el navbar fijo */
+html, body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: auto;
+}
+
+body {
+  padding-top: 120px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+/* Reset scroll para contenedores principales */
+#root, main {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 @tailwind components;
 @tailwind utilities;
 

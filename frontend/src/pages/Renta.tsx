@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import prt1 from '../Public/Renta/nuestroProceso/1.png';
 import { FaBalanceScale, FaHome, FaIdCard, FaSmile } from 'react-icons/fa';
 import prt2 from '../Public/Renta/nuestroProceso/2.png';
@@ -9,6 +9,63 @@ import prt6 from '../Public/Renta/nuestroProceso/6.png';
 import fondo from '../Public/fondo.png';
 import hero from '../Public/image 6.png';
 import form_Img from '../Public/foto1.jpeg';
+
+const useCounterAnimation = (end: number, duration: number = 2000, delay: number = 0) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setTimeout(() => {
+            const startTime = Date.now();
+            const timer = setInterval(() => {
+              const timePassed = Date.now() - startTime;
+              if (timePassed >= duration) {
+                setCount(end);
+                clearInterval(timer);
+              } else {
+                const progress = timePassed / duration;
+                const easeOutQuad = 1 - (1 - progress) * (1 - progress);
+                setCount(Math.floor(easeOutQuad * end));
+              }
+            }, 16);
+            setHasAnimated(true);
+          }, delay);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [end, duration, delay, hasAnimated]);
+
+  return { count, countRef };
+};
+
+interface CounterStatProps {
+  end: number;
+  suffix?: string;
+  label: string;
+  delay?: number;
+}
+
+const CounterStat = ({ end, suffix = "", label, delay = 0 }: CounterStatProps) => {
+  const { count, countRef } = useCounterAnimation(end, 2000, delay);
+  
+  return (
+    <div className="text-center fade-in-up" ref={countRef} style={{ animationDelay: `${delay}ms` }}>
+      <p className="text-5xl md:text-6xl font-light mb-2">+{count}{suffix}</p>
+      <p className="text-gray-400 text-lg">{label}</p>
+    </div>
+  );
+};
 
 const Renta = () => {
   useEffect(() => {
@@ -89,25 +146,25 @@ const Renta = () => {
             ¿Por Qué Alquilar con TORSSAM?
           </h2>
           <div className="grid md:grid-cols-2 gap-x-8 gap-y-12 text-left">
-            <div className="flex items-start space-x-4">
+            <div className="flex items-start space-x-4 fade-in-up">
               <FaBalanceScale className="text-4xl text-white" />
               <div>
                 <p className="text-xl">Proceso 100% profesional y respaldado legalmente.</p>
               </div>
             </div>
-            <div className="flex items-start space-x-4">
+            <div className="flex items-start space-x-4 fade-in-up" style={{ animationDelay: '200ms' }}>
               <FaHome className="text-4xl text-white" />
               <div>
                 <p className="text-xl">Difusión efectiva y rápida ocupación.</p>
               </div>
             </div>
-            <div className="flex items-start space-x-4">
+            <div className="flex items-start space-x-4 fade-in-up" style={{ animationDelay: '400ms' }}>
               <FaIdCard className="text-4xl text-white" />
               <div>
                 <p className="text-xl">Filtrado estricto de inquilinos.</p>
               </div>
             </div>
-            <div className="flex items-start space-x-4">
+            <div className="flex items-start space-x-4 fade-in-up" style={{ animationDelay: '600ms' }}>
               <FaSmile className="text-4xl text-white" />
               <div>
                 <p className="text-xl">Tranquilidad total: tú cobras, nosotros gestionamos.</p>
@@ -146,22 +203,28 @@ const Renta = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Stat 1 */}
-                   <div className="text-center">
-              <p className="text-5xl md:text-6xl font-light mb-2">+2 mil</p>
-              <p className="text-gray-400 text-lg">Unidades Vendidas</p>
-            </div>
+            <CounterStat
+              end={2}
+              suffix=" mil"
+              label="Unidades Vendidas"
+              delay={0}
+            />
             
             {/* Stat 2 */}
-            <div className="text-center">
-              <p className="text-5xl md:text-6xl font-light mb-2">+20 mil</p>
-              <p className="text-gray-400 text-lg">Clientes Atendidos</p>
-            </div>
+            <CounterStat
+              end={20}
+              suffix=" mil"
+              label="Clientes Atendidos"
+              delay={200}
+            />
             
             {/* Stat 3 */}
-            <div className="text-center">
-              <p className="text-5xl md:text-6xl font-light mb-2">+3 mil</p>
-              <p className="text-gray-400 text-lg">Unidades Rentadas</p>
-            </div>
+            <CounterStat
+              end={3}
+              suffix=" mil"
+              label="Unidades Rentadas"
+              delay={400}
+            />
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8"></div>
@@ -170,18 +233,18 @@ const Renta = () => {
       </section>
 
         {/* Sección Conoce Nuestro Proceso */}
-        <div className="bg-[#000000] py-20">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="bg-[#000000] py-32">
+        <div className="max-w-6xl mx-auto px-6">
           {/* Título */}
-          <h2 className="text-4xl font-light text-white text-center mb-16">
+          <h2 className="text-6xl font-light text-white text-center mb-24" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
             Conoce Nuestro<br />
-            Proceso de renta paso a paso
+            <span className="text-gray-300">Proceso de renta paso a paso</span>
           </h2>
 
           {/* Pasos del proceso */}
           <div className="relative">
             {/* Línea vertical conectora (centrada) */}
-            <div className="absolute left-1/2 top-6 bottom-6 w-px bg-white  -translate-x-1/2 "></div>
+            <div className="absolute left-1/2 top-6 bottom-6 w-0.5 bg-white opacity-50 -translate-x-1/2"></div>
 {/*animación de los pasos*/}
             <style>{`
   @keyframes fadeInUp {
@@ -199,6 +262,14 @@ const Renta = () => {
   .fade-in-up {
     opacity: 0;
     transform: translateY(20px) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in-up.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+    transform: translateY(20px) scale(0.95);
   }
 
   .fade-in-up.in-view {
@@ -209,17 +280,19 @@ const Renta = () => {
 
 
             {/* Paso 1 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
+            <div className="relative mb-24 fade-in-up mt-16 p-6">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-2xl z-10 shadow-lg">
                 1
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
                 <div className="flex justify-center sm:justify-end">
-                  <img src={prt1} alt="Auditoría Documental" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                  <img src={prt1} alt="Auditoría Documental" className="w-[450px] h-[320px] object-cover rounded-[20px] pr-12 hidden sm:block shadow-xl hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2">Auditoría Documental y Preparación Legal</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="text-white max-w-lg">
+                  <h3 className="text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Auditoría Documental y Preparación Legal
+                  </h3>
+                  <p className="text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Revisamos y ordenamos toda la documentación necesaria para garantizar que la propiedad esté lista para la venta. Nuestro equipo legal verifica títulos, gravámenes y antecedentes para evitar sorpresas en el cierre.
                   </p>
                 </div>
@@ -233,30 +306,32 @@ const Renta = () => {
                 2
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-                <div className="order-2 sm:order-1 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Análisis Inicial y Valoración Profesional</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="order-2 sm:order-1 text-white max-w-lg">
+                  <h3 className="text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>Análisis Inicial y Valoración Profesional</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Realizamos una valoración profesional y un análisis de mercado para definir un precio competitivo y una estrategia que maximice tu beneficio y acelere la venta.
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt2} alt="Análisis Inicial" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt2} alt="Análisis Inicial" className="w-[450px] h-[320px] object-cover rounded-[20px] pl-12 hidden sm:block shadow-xl hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
             </div>
 
             {/* Paso 3 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
+            <div className="relative mb-24 fade-in-up mt-16 p-6">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-2xl z-10 shadow-lg">
                 3
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
                 <div className="flex justify-center sm:justify-end">
-                  <img src={prt3}  alt="Estrategia de Comercialización" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                  <img src={prt3}  alt="Estrategia de Comercialización" className="w-[450px] h-[320px] object-cover rounded-[20px] pr-12 hidden sm:block shadow-xl hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2">Estrategia de Comercialización Personalizada</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="text-white max-w-lg">
+                  <h3 className="text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Estrategia de Comercialización Personalizada
+                  </h3>
+                  <p className="text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Diseñamos un plan de comercialización a la medida: fotografía profesional, anuncios en portales y difusión dirigida para atraer compradores calificados.
                   </p>
                 </div>
@@ -269,30 +344,34 @@ const Renta = () => {
                 4
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-                <div className="order-2 sm:order-1 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Gestión de Interesados y Visitas Filtradas</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="order-2 sm:order-1 text-white max-w-lg">
+                  <h3 className="text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Gestión de Interesados y Visitas Filtradas
+                  </h3>
+                  <p className="text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Coordinamos y filtramos interesados, agendamos visitas con compradores preseleccionados y realizamos presentaciones guiadas para optimizar tiempo y resultados.
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt4}alt="Gestión de Interesados" className="w-[350px] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt4}alt="Gestión de Interesados" className="w-[450px] h-[320px] object-cover rounded-[20px] pl-12 hidden sm:block shadow-xl hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
             </div>
 
             {/* Paso 5 */}
-            <div className="relative mb-12 fade-in-up mt-10 p-4 ">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-12 h-12 bg-white rounded-full flex items-center justify-center text-black font-semibold text-lg z-10">
+            <div className="relative mb-24 fade-in-up mt-16 p-6">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-16 h-16 bg-white rounded-full flex items-center justify-center text-black font-bold text-2xl z-10 shadow-lg">
                 5
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-8">
                 <div className="flex justify-center sm:justify-end">
-                  <img src={prt5}alt="Negociación y Ofertas" className="w-[250] h-[200px] object-cover rounded-[10px] pr-10 hidden sm:block" />
+                  <img src={prt5}alt="Negociación y Ofertas" className="w-[450px] h-[320px] object-cover rounded-[20px] pr-12 hidden sm:block shadow-xl hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2">Negociación y Presentación de Ofertas</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="text-white max-w-lg">
+                  <h3 className="text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>
+                    Negociación y Presentación de Ofertas
+                  </h3>
+                  <p className="text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Asesoramos en la recepción y negociación de ofertas, evaluando propuestas y buscando las mejores condiciones para ti, con transparencia y protección de tus intereses.
                   </p>
                 </div>
@@ -305,14 +384,14 @@ const Renta = () => {
                 6
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-6">
-                <div className="order-2 sm:order-1 text-white">
-                  <h3 className="text-xl font-semibold mb-2">Firma, Escritura y Cierre Seguro</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                <div className="order-2 sm:order-1 text-white max-w-lg">
+                  <h3 className="text-3xl font-semibold mb-4" style={{ fontFamily: '"Poltawski Nowy", serif' }}>Firma, Escritura y Cierre Seguro</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Acompañamos todo el proceso de firma y escrituración, coordinando trámites y garantizando un cierre seguro y conforme a la normativa.
                   </p>
                 </div>
                 <div className="order-1 sm:order-2 flex justify-center sm:justify-start">
-                  <img src={prt6}  alt="Firma y Cierre" className="w-[250] h-[200px] object-cover rounded-[10px] pl-10 hidden sm:block" />
+                  <img src={prt6}  alt="Firma y Cierre" className="w-[450px] h-[320px] object-cover rounded-[20px] pl-12 hidden sm:block shadow-xl hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
             </div>

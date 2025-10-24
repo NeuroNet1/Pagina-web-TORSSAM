@@ -6,11 +6,14 @@ import Venta from './pages/Venta'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Renta from './pages/Renta'
-import Propiedades from './pages/Propiedades' 
+import Propiedades from './pages/Propiedades'
+import PropiedadDetalle from './pages/PropiedadDetalle'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col overflow-hidden">
         <Navbar />
         <main className="flex-1 w-full max-w-full">
@@ -22,6 +25,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/propiedades" element={<Propiedades />} />
+              <Route path="/propiedad/:id" element={<PropiedadDetalle />} />
             </Routes>
           </div>
         </main>
