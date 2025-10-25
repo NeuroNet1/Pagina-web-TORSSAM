@@ -5,7 +5,7 @@ import form_Img from '../Public/foto1.jpeg';
 import prt3 from '../Public/Ventas/nuestroproceso/prt3.png';
 import prt4 from '../Public/Ventas/nuestroproceso/prt4.png';
 import prt5 from '../Public/Ventas/nuestroproceso/prt5.png';
-import hero from '../Public/Propiedades/hero (2).mp4';
+import hero from '../Public/Ventas/overley_Venta/descarga.png';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaUserCheck, FaBalanceScale, FaLightbulb, FaChartLine } from 'react-icons/fa';
 import fondo from '../Public/fondo.png';
